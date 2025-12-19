@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import connectSocketIO from './src/controllers/socketManager.js';
 import userRoutes from './src/routes/userRoute.js';
-const app = express()
+const app = express();
 const server = createServer(app);
 const io = connectSocketIO(server);
 app.set("port",(process.env.PORT || 3000));
