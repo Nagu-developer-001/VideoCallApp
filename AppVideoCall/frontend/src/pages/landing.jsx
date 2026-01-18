@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Landing() {
+export default function LandingPage() {
     return (
     <div>
         <h1>Welcome to AppVideoCall</h1>
