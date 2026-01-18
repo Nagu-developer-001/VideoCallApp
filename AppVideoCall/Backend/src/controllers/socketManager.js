@@ -6,7 +6,14 @@ let messages = {};
 let timeOnline = {};
 
 const connectSocketIO = (server) => {
-    const io = new Server(server);
+    const io = new Server(server,{
+        cors:{
+            origin:"*",
+            methods:["GET","POST"],
+            allowedHeaders:["*"],
+            credentials:true
+        }
+    });
 
     io.on('connection',(socket)=>{
         socket.on('join',(data)=>{
@@ -48,8 +55,25 @@ const connectSocketIO = (server) => {
             });
         
             socket.on('disconnect',()=>{
-                
-        });
+                var diff = Math.abs(timeOnline[socket.id] - new Date());
+                var key;
+                for(const [k,v] of JSON.parse(JSON.stringify(Object.entries(connection)))){
+                    for(let a=0;a<v.length;++a){
+                        if(v[a]===socket.id){
+                            key = k;
+                            for(let a=0;a<connections[key].length;++a){
+                                io.to(connections[key][a]).emit('user-left',socket.id);
+                            }
+                            var index = connections[key].indexOf(socket.id);
+                            connections[key].splice(index,1);
+                            if(connections[key].length === 0){
+                                delete connections[key];
+                            }
+                        }
+                    }
+                }
+        
+            });
     };
 });
     return io;
