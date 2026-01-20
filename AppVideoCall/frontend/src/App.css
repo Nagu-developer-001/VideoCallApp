@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
+.landingPageContainer{
+  width:100vw;
+  height:100vh;
+  background-image: url('../public/logo192.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.landingPageContainer nav{
+  padding-inline: 1.2rem;
+  padding-block: 0.8rem;
+  display:flex;
+  justify-content: space-between;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.landingPageContainer nav h2{
+  font-size: 1.8rem;
+  font-weight: 500;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.landingPageContainer nav .navList{
   display: flex;
-  flex-direction: column;
+  gap:1.6rem;
+  cursor: pointer;
+}
+.landingMainContainer{
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 3rem;height:80vh;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.landingMainContainer >div:nth-child(1){
+  font-size: 2.2rem;
+  
+}
+.landingMainContainer >div:nth-child(1) div[role="button"]{
+  background-color: #ff9;
+  width:fit-content;
+  padding:1rem;
+  border-radius: 20px;
+  margin-top: 1.9rem;
+}
+.landingMainContainer >div:nth-child(1) div[role="button"] a{
+  text-decoration: none;
+  color:black;
+  font-size: 1.7rem;
+  font-weight: 600;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.landingMainContainer >div:nth-child(1) img{
+  height:70vh;
+  width:auto;
 }
