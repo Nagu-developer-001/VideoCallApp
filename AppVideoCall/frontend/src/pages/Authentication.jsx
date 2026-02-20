@@ -46,7 +46,9 @@ export default function Authentication() {
     let handleAuth = async ()=>{
         try{
             if(formState===0){
-
+                let result = await handleLogin(username,password);
+            setMessage("Login successful");
+            setOpen(true);
             }
             if(formState===1){
                 let result = await handleRegister(name,username,password);
@@ -55,7 +57,7 @@ export default function Authentication() {
                 setOpen(true);
             }
         }catch(err){
-            let message = (err.response.data.message);
+            let message = (err.response);
             setError(message);
         }
     }
